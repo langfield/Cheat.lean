@@ -24,12 +24,16 @@
 
 ## `-- a`
 Declares an inline comment.
+
+
 ## `:`
 Indicates the type of a term.
 ##### Example
 ```lean
-x : Nat := 0
+def x : Nat := 0
 ```
+
+
 ## `:=`
 ## `=`
 ## `->`

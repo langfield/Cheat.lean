@@ -26,4 +26,6 @@ def main : IO Unit :=
   -- IO.println s!"{double (2 * 2)}"
   IO.println s!"{1 - 2}"
   def zero := 1 - 2
+  def x : Nat := 0
+  #print x
   #print zero
