@@ -64,6 +64,9 @@ We declare a lambda function that adds `5` to its argument:
 ```lean
 λ (x : Nat) => x + 5
 ```
+In English, we could say that this lambda function "maps the natural number
+parameter `x` to `x + 5`". We could write this in mathematical notation as $x
+\mapsto x + 5$.
 
 ## `;`
 ## `_`
