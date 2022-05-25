@@ -9,25 +9,32 @@
 ## `¬`
 ## `/\`
 ## `∧`
-#### Shortcut(s): `\and`
+###### Shortcut(s): `\and`
 ## `\/`
 ## `∨`
-#### Shortcut(s): `\or`
+###### Shortcut(s): `\or`
 ## `<->`
 ## `↔`
-#### Shortcut(s): `\iff, \lr`
+###### Shortcut(s): `\iff, \lr`
 ## `¬`
-#### Shortcut(s): `\not, \neg`
+###### Shortcut(s): `\not, \neg`
 
 
 # Syntax
 
 ## `-- a`
+Declares an inline comment.
+## `:`
+Indicates the type of a term.
+##### Example
+```lean
+x : Nat := 0
+```
 ## `:=`
 ## `=`
 ## `->`
 ## `→`
-#### Shortcuts: `\to, \r, \imp`
+###### Shortcuts: `\to, \r, \imp`
 ## `.`
 ## `,`
 ## `=>`
@@ -44,6 +51,8 @@ example). Then `·` serves as a placeholder. The notation is activated with
 parentheses.
 ## `..`
 Provides missing explicit arguments as `_`.
+## `|`
+Separates constructors within an inductive type declaration.
 
 
 # Infoview
@@ -57,6 +66,9 @@ Indicates that the Lean does not have enough information to infer the type of
 # Enclosing glyphs
 
 ## `/- a -/`
+Declares a multiline comment.
+## `/-- a -/`
+Declares a multiline comment.
 ## `(a)`
 ## `⟨a, b⟩`
 Constructs an anonymous product term.
@@ -66,7 +78,7 @@ Constructs an anonymous product term.
 ## `[a, b, c]`
 Groups hypotheses to be used as an argument to a tactic.
 ## `‹a›`
-#### Shortcut(s): `\f<, \f>`
+###### Shortcut(s): `\f<, \f>`
 Fills in the proof of the proposition `a : Prop`.
 ## `⦃a⦄`
 Declares `a` as a weak implicit argument.
@@ -115,6 +127,9 @@ is closed, or until the end of the file.
 ## `inductive`
 ## `where`
 ## `deriving`
+## `extern`
+An attribute declaring a definition as being defined via the Lean C FFI
+(foreign function interface).
 
 # Tactics
 
