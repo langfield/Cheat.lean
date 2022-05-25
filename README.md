@@ -27,14 +27,26 @@ Declares an inline comment.
 
 
 ## `:`
+
 Indicates the type of a term.
+
 ##### Example
 ```lean
 def x : Nat := 0
 ```
 
-
 ## `:=`
+
+Defines the value of an identifier.
+
+##### Example
+
+We declare the symbol/identifier `x` to be a term of type `Nat` whose value is
+`0`:
+```lean
+def x : Nat := 0
+```
+
 ## `=`
 ## `->`
 ## `→`
@@ -42,6 +54,17 @@ def x : Nat := 0
 ## `.`
 ## `,`
 ## `=>`
+
+Indicates the expression yielded by a lambda function given its arguments. Can
+be read in English as "maps to", and is in most cases synonymous with the
+mathematical notation $\mapsto$.
+
+##### Example
+We declare a lambda function that adds `5` to its argument:
+```lean
+λ (x : Nat) => x + 5
+```
+
 ## `;`
 ## `_`
 ## `@`
@@ -90,6 +113,15 @@ Declares `a` as a weak implicit argument.
 # Keywords
 
 ## `def`
+Declares new constant symbols into the working environment.
+
+##### Example
+We declare the symbol/identifier `x` to be a term of type `Nat` whose value is
+`1`:
+```lean
+def x : Nat := 1
+```
+
 ## `universe`
 ## `fun`
 ## `λ`
