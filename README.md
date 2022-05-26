@@ -1,6 +1,8 @@
 # Index
 
-* [`--`](#--)
+* [`--`](#--) (comments)
+* [`:`](#:) (type declaration)
+* [`:=`](#:=) (value definition)
 
 # Syntax
 
