@@ -29,6 +29,22 @@ def goo (x : Nat) : Nat := x + 2
 #check foo
 #check goo
 
+universe u
+
+-- Playing with records.
+structure Point (α : Type u) where
+  x : α
+  y : α
+  deriving Repr
+
+#check Point.mk
+#check Point.mk 0 0
+
+def p₁ : Point Int := Point.mk 0 0
+
+#check p₁
+#eval p₁
+
 def main : IO Unit :=
   -- IO.println s!"Hello, {hello}!"
   -- IO.println s!"{double (2 * 2)}"

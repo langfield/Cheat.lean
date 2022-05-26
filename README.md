@@ -198,6 +198,11 @@ theorem without naming it or adding it to the environment.
 Proves a proposition by a tactic.
 ## `match`
 ## `with`
+
+#### Syntax: `{ a with b := c}`
+
+Returns a copy of the record `a` with the `b` field's value replaced with `c`.
+
 ## `notation`
 ## `import`
 ## `attribute`
