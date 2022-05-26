@@ -1,8 +1,22 @@
 # Index
 
+## Naked operators
 * [`--`](#--) (comments)
 * [`:`](#https://github.com/langfield/Cheat.lean/blob/master/README.md#a--b) (type declaration)
 * [`:=`](#:=) (value definition)
+* [`=`](#=) (equality proposition)
+* [`→`](#→) (function arrow)
+* [`def`]
+* [`#check`]
+
+## Operators with dummy symbols
+* [`-- a`](#--) (comments)
+* [`a : b`](#https://github.com/langfield/Cheat.lean/blob/master/README.md#a--b) (type declaration)
+* [`a := b`](#:=) (value definition)
+* [`a = b`](#=) (equality proposition)
+* [`a → b`](#→) (function arrow)
+* [`def a := b`]
+* [`#check a`]
 
 # Syntax
 
@@ -15,7 +29,7 @@ Declares an inline comment.
 -- This a comment.
 ```
 
-## `:`
+## `:` (type)
 
 Indicates the type of a term.
 
@@ -43,9 +57,9 @@ Constructs a proposition (`Prop`) that asserts that the left-hand side is equal
 (in the mathematical sense) to the right hand side.
 
 
-## `->`
 ## `→`
 ###### Shortcuts: `\to, \r, \imp`
+###### ASCII: `->`
 ## `.`
 ## `,`
 
