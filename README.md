@@ -1,7 +1,10 @@
+# Index
+
+* [`--`](comments)
 
 # Syntax
 
-## `--`
+## `--` {#comments}
 Declares an inline comment.
 
 
