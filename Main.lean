@@ -24,6 +24,11 @@ end
 def twice (f : Nat → Nat) (a : Nat) :=
   f (f a)
 
+def foo (x : Nat) := x + 2
+def goo (x : Nat) : Nat := x + 2
+#check foo
+#check goo
+
 def main : IO Unit :=
   -- IO.println s!"Hello, {hello}!"
   -- IO.println s!"{double (2 * 2)}"
@@ -33,3 +38,5 @@ def main : IO Unit :=
   #print x
   #print zero
   #eval twice (fun x => x + 2) 10
+  def p : Nat × Int := ⟨1, 2⟩
+  def r : Int := 0

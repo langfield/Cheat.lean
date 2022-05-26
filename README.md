@@ -20,7 +20,7 @@
 
 # Syntax
 
-## `--`
+## `-- a`
 Declares an inline comment.
 
 
@@ -29,7 +29,7 @@ Declares an inline comment.
 -- This a comment.
 ```
 
-## `:` (type)
+## `a : b` (type declaration)
 
 Indicates the type of a term.
 
@@ -116,9 +116,25 @@ Declares a multiline comment.
 ## `/-- a -/`
 Declares a multiline comment.
 ## `(a)`
-## `⟨a, b⟩`
-Constructs an anonymous product term.
-## `⟨a, b, c⟩`
+
+## `⟨a1, a2, ..., an⟩`
+
+###### Shortcuts: `\<, \>`
+
+Constructs an inductive type with arguments `a1, a2, ..., an` in cases where
+Lean can infer the type of the expression.
+
+##### Example
+
+We define `p` to be an ordered pair where the first element is a natural number
+and the second element is an integer. Our ordered pair is represented in Lean
+by a product, and since we explicitly give the type of `p` as `Nat × Int`, we're
+able to use the `⟨⟩` notation.
+```lean
+def p : Nat × Int := ⟨1, 2⟩
+```
+
+
 ## `{a}`
 ## `"a"`
 ## `[a, b, c]`
@@ -132,7 +148,17 @@ Declares `a` as a weak implicit argument.
 # Keywords
 
 ## `def`
-Declares new constant symbols into the working environment.
+#### Syntax: `def a := c`
+#### Syntax: `def a : b := c`
+Defines `a` to denote `c`, which should have type `b`. In other words, this
+gives the name `a` to the term `c`.
+
+#### Syntax: `def a (a₁ : α₁) (a₂ : α₂) ... (aₙ : αₙ) : b := c`
+
+Defines `a` to denote `c`, which should have type `b`, and take $n$ arguments
+corresponding to the parameters `a₁, a₂, ..., aₙ`. The notation `(aᵢ : αᵢ)`
+indicates that the parameter `aᵢ` has type `αᵢ`. This list of parameters
+together with their types is called a *context*.
 
 ##### Example
 We declare the symbol/identifier `x` to be a term of type `Nat` whose value is
@@ -158,7 +184,16 @@ Alias for the keyword `fun`.
 ## `theorem`
 ## `show`
 ## `from`
+
 ## `example`
+#### Syntax: `example : a := b`
+Elaborates `b` and checks that it has type `a`, without adding it to the
+environment.
+
+This is basically a way of declaring an anonymous definition or theorem. It
+exists because it is sometimes useful to be able to simulate a definition or
+theorem without naming it or adding it to the environment.
+
 ## `by`
 Proves a proposition by a tactic.
 ## `match`
@@ -206,22 +241,21 @@ Prints information about an identifier.
 
 # Operators
 
-## `&&`
-## `||`
-## `+`
-## `*`
 ## `×`
 ## `Σ`
-## `¬`
-## `/\`
+
 ## `∧`
+###### ASCII: `/\`
 ###### Shortcut(s): `\and`
-## `\/`
+
 ## `∨`
+###### ASCII: `\/`
 ###### Shortcut(s): `\or`
-## `<->`
+
 ## `↔`
+###### ASCII: `<->`
 ###### Shortcut(s): `\iff, \lr`
+
 ## `¬`
 ###### Shortcut(s): `\not, \neg`
 
@@ -233,3 +267,11 @@ Prints information about an identifier.
 An identifier containing a subscript. Unicode subscripts do not carry any
 special syntactic meaning. They are simply another glyph that can be included
 in an identifier/variable name.
+
+# Glossary
+
+### Command
+Lean 4 commands look like `#print`, `#check`, `#eval`, etc. They tell the
+compiler to perform a certain action.
+
+### Term
