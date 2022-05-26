@@ -1,7 +1,7 @@
 # Index
 
 * [`--`](#--) (comments)
-* [`:`](#:) (type declaration)
+* [`:`](#a-:-b) (type declaration)
 * [`:=`](#:=) (value definition)
 
 # Syntax
@@ -15,7 +15,7 @@ Declares an inline comment.
 -- This a comment.
 ```
 
-## `:`
+## `a : b`
 
 Indicates the type of a term.
 
