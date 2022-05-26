@@ -158,7 +158,7 @@ gives the name `a` to the term `c`.
 Defines `a` to denote `c`, which should have type `b`, and take $n$ arguments
 corresponding to the parameters `a₁, a₂, ..., aₙ`. The notation `(aᵢ : αᵢ)`
 indicates that the parameter `aᵢ` has type `αᵢ`. This list of parameters
-together with their types is called a *context*.
+together with their types is called a **context**.
 
 ##### Example
 We declare the symbol/identifier `x` to be a term of type `Nat` whose value is
