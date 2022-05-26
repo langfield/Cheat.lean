@@ -21,6 +21,9 @@ theorem t2 : double (x * y) = double x * y := by
 
 end
 
+def twice (f : Nat → Nat) (a : Nat) :=
+  f (f a)
+
 def main : IO Unit :=
   -- IO.println s!"Hello, {hello}!"
   -- IO.println s!"{double (2 * 2)}"
@@ -29,3 +32,4 @@ def main : IO Unit :=
   def x : Nat := 0
   #print x
   #print zero
+  #eval twice (fun x => x + 2) 10

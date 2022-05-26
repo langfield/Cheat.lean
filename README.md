@@ -1,36 +1,21 @@
-# Operators
-
-## `&&`
-## `||`
-## `+`
-## `*`
-## `×`
-## `Σ`
-## `¬`
-## `/\`
-## `∧`
-###### Shortcut(s): `\and`
-## `\/`
-## `∨`
-###### Shortcut(s): `\or`
-## `<->`
-## `↔`
-###### Shortcut(s): `\iff, \lr`
-## `¬`
-###### Shortcut(s): `\not, \neg`
-
 
 # Syntax
 
-## `-- a`
+## `--`
 Declares an inline comment.
 
+
+##### Example
+```lean
+-- This a comment.
+```
 
 ## `:`
 
 Indicates the type of a term.
 
 ##### Example
+We declare a constant symbol `x` to have type `Nat` with value `0`.
 ```lean
 def x : Nat := 0
 ```
@@ -48,11 +33,22 @@ def x : Nat := 0
 ```
 
 ## `=`
+
+Constructs a proposition (`Prop`) that asserts that the left-hand side is equal
+(in the mathematical sense) to the right hand side.
+
+
 ## `->`
 ## `→`
 ###### Shortcuts: `\to, \r, \imp`
 ## `.`
 ## `,`
+
+Separates:
+
+1. Constructors within an inductive type declaration.
+2. The fields of a structure (e.g. in `{x := 3, y := 6}`).
+3. The elements of a list (e.g. in `[1, 2, 3]`).
 ## `=>`
 
 Indicates the expression yielded by a lambda function given its arguments. Can
@@ -64,9 +60,10 @@ We declare a lambda function that adds `5` to its argument:
 ```lean
 λ (x : Nat) => x + 5
 ```
-In English, we could say that this lambda function "maps the natural number
-parameter `x` to `x + 5`". We could write this in mathematical notation as $x
-\mapsto x + 5$.
+In English, we could say that this lambda function _maps the natural number
+parameter `x` to `x + 5`_.
+
+We could write this in mathematical notation as $x \mapsto x + 5$.
 
 ## `;`
 ## `_`
@@ -186,6 +183,29 @@ Starts a calculational proof.
 ## `#reduce`
 ## `#print`
 Prints information about an identifier.
+
+
+# Operators
+
+## `&&`
+## `||`
+## `+`
+## `*`
+## `×`
+## `Σ`
+## `¬`
+## `/\`
+## `∧`
+###### Shortcut(s): `\and`
+## `\/`
+## `∨`
+###### Shortcut(s): `\or`
+## `<->`
+## `↔`
+###### Shortcut(s): `\iff, \lr`
+## `¬`
+###### Shortcut(s): `\not, \neg`
+
 
 # Miscellaneous
 
