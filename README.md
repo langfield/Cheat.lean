@@ -1,3 +1,4 @@
+
 # Index
 
 ## Notes
@@ -82,6 +83,17 @@ Constructs a proposition (`Prop`) that asserts that the left-hand side is equal
 ###### ASCII: `->`
 
 Constructs a function type from the type `a` to the type `b`.
+
+##### Example
+
+We define an identity function on natural numbers, and observe that the type of
+our function (displayed when we use the transitory command `#check` in our
+editor) is `Nat → Nat`:
+
+```lean
+def identity (x : Nat) : Nat := x
+#check identity     ■ identity : Nat → Nat
+```
 
 ## `a.b` (field accessor)
 
@@ -377,3 +389,4 @@ Lean 4 commands look like `#print`, `#check`, `#eval`, etc. They tell the
 compiler to perform a certain action.
 
 ### Term
+

@@ -1,5 +1,3 @@
-import Cheat
-
 section
 variable (x y : Nat)
 
@@ -44,6 +42,22 @@ def p₁ : Point Int := Point.mk 0 0
 
 #check p₁
 #eval p₁
+
+-- Pipelining.
+def add1 x := x + 1
+def times2 x := x * 2
+
+#eval times2 (add1 100)
+#eval 100 |> add1 |> times2
+#eval times2 <| add1 <| 100
+
+def identity : Nat → Nat := λ x => x
+def identity2 (x : Nat) : Nat := x
+
+#check identity
+
+#eval identity 5
+#eval identity2 6
 
 def main : IO Unit :=
   -- IO.println s!"Hello, {hello}!"
