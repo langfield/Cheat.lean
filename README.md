@@ -1,7 +1,7 @@
 # Index
 
 ## Operators with dummy symbols
-* [`-- a`](#--) (comments)
+* [`-- a`](#---a-comment) (comment)
 * [`a : b`](#https://github.com/langfield/Cheat.lean/blob/master/README.md#a--b) (type declaration)
 * [`a := b`](#:=) (value definition)
 * [`a = b`](#=) (equality proposition)
