@@ -30,7 +30,7 @@
 * [`a : α`](#a--α-type-declaration) (type declaration)
 * [`a := b`](#a--b-definition) (definition)
 * [`a = b`](#a--b-equality) (equality)
-* [`α → β`](#→) (function arrow)
+* [`α → β`](#α-→-β-function-arrow) (function arrow)
 
 ## Keywords
 * [`def`](#def)
@@ -77,7 +77,7 @@ Constructs a proposition (`Prop`) that asserts that the left-hand side is equal
 (in the mathematical sense) to the right hand side.
 
 
-## `a → b` (function arrow)
+## `α → β` (function arrow)
 ###### Shortcuts: `\to, \r, \imp`
 ###### ASCII: `->`
 
