@@ -2,7 +2,7 @@
 
 ## Operators with dummy symbols
 * [`-- a`](#---a-comment) (comment)
-* [`a : b`](#https://github.com/langfield/Cheat.lean/blob/master/README.md#a--b) (type declaration)
+* [`a : b`](#a--b-type-declaration) (type declaration)
 * [`a := b`](#:=) (value definition)
 * [`a = b`](#=) (equality proposition)
 * [`a → b`](#→) (function arrow)
