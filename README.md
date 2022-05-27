@@ -6,10 +6,16 @@
   For example, `a` in `def a := b` must be an identifier, but we use `a`
   elsewhere as an arbitrary term (e.g. in `a = b`. One option is to use
   lowercase letters for identifiers, names, variables, and uppercase letters
-  for terms.
+  for terms. As is common in the Lean 4 docs, greek letter could be used for
+  types. So we would write an arbitrary type declaration as `a : α`. The
+  distinction between terms and types is crucial (even though, technically, all
+  types are terms, since they have type `Type u`), especially for beginners.
+  However, the distinction between which operators and keywords are applicable
+  to identifiers and which are applicable to arbitrary terms may be clear
+  enough from the examples given.
 
-* In anchors, the following symbols are filtered out, i.e. mapped to the empty
-  string:
+* In anchors (links to markdown subsections of the form `#token1-token2`), the
+  following symbols are filtered out, i.e. mapped to the empty string:
 
   1. `:`
   2. `=`
@@ -21,12 +27,16 @@
 ## Symbols and operators
 
 * [`-- a`](#---a-comment) (comment)
-* [`a : b`](#a--b-type-declaration) (type declaration)
+* [`a : α`](#a--α-type-declaration) (type declaration)
 * [`a := b`](#a--b-definition) (definition)
 * [`a = b`](#a--b-equality) (equality)
-* [`a → b`](#→) (function arrow)
-* [`def a := b`]
-* [`#check a`]
+* [`α → β`](#→) (function arrow)
+
+## Keywords
+* [`def`](#def)
+
+## #Commands
+* [`#check`](#check)
 
 # Symbols and operators
 
@@ -39,7 +49,7 @@ Declares an inline comment.
 -- This a comment.
 ```
 
-## `a : b` (type declaration)
+## `a : α` (type declaration)
 
 Indicates the type of a term.
 
