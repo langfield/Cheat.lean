@@ -1,10 +1,10 @@
 # Index
 
-## Operators with dummy symbols
+## Syntax, operators, and symbols
 * [`-- a`](#---a-comment) (comment)
 * [`a : b`](#a--b-type-declaration) (type declaration)
-* [`a := b`](#:=) (value definition)
-* [`a = b`](#=) (equality proposition)
+* [`a := b`](#:=) (definition)
+* [`a = b`](#=) (equality)
 * [`a → b`](#→) (function arrow)
 * [`def a := b`]
 * [`#check a`]
