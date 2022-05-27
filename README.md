@@ -1,15 +1,26 @@
 # Index
 
-## Syntax, operators, and symbols
+## Notes
+
+* It may be necessary to use different dummy symbol sets for different terms.
+  For example, `a` in `def a := b` must be an identifier, but we use `a`
+  elsewhere as an arbitrary term (e.g. in `a = b`. One option is to use
+  lowercase letters for identifiers, names, variables, and uppercase letters
+  for terms.
+
+## How to use this field guide
+
+## Symbols and operators
+
 * [`-- a`](#---a-comment) (comment)
 * [`a : b`](#a--b-type-declaration) (type declaration)
-* [`a := b`](#:=) (definition)
+* [`a := b`](#a----b-definition) (definition)
 * [`a = b`](#=) (equality)
 * [`a → b`](#→) (function arrow)
 * [`def a := b`]
 * [`#check a`]
 
-# Syntax
+# Symbols and operators
 
 ## `-- a` (comment)
 Declares an inline comment.
@@ -42,24 +53,31 @@ We declare the symbol/identifier `x` to be a term of type `Nat` whose value is
 def x : Nat := 0
 ```
 
-## `=` (equality)
+## `a = b` (equality)
 
 Constructs a proposition (`Prop`) that asserts that the left-hand side is equal
 (in the mathematical sense) to the right hand side.
 
 
-## `→` (function arrow)
+## `a → b` (function arrow)
 ###### Shortcuts: `\to, \r, \imp`
 ###### ASCII: `->`
-## `.`
-## `,`
+
+Constructs a function type from the type `a` to the type `b`.
+
+## `a.b` (field accessor)
+
+Accesses the field `b` of the term `a`.
+
+## `,` (comma)
 
 Separates:
 
 1. Constructors within an inductive type declaration.
 2. The fields of a structure (e.g. in `{x := 3, y := 6}`).
 3. The elements of a list (e.g. in `[1, 2, 3]`).
-## `=>`
+
+## `=>` (mapsto)
 
 Indicates the expression yielded by a lambda function given its arguments. Can
 be read in English as "maps to", and is in most cases synonymous with the
@@ -162,7 +180,7 @@ def p : Nat × Int := ⟨1, 2⟩
 ## `[a, b, c]`
 Groups hypotheses to be used as an argument to a tactic.
 ## `‹a›`
-###### Shortcut(s): `\f<, \f>`
+###### Shortcuts: `\f<, \f>`
 Fills in the proof of the proposition `a : Prop`.
 ## `⦃a⦄`
 Declares `a` as a weak implicit argument.
@@ -296,18 +314,18 @@ Prints information about an identifier.
 
 ## `∧`
 ###### ASCII: `/\`
-###### Shortcut(s): `\and`
+###### Shortcuts: `\and`
 
 ## `∨`
 ###### ASCII: `\/`
-###### Shortcut(s): `\or`
+###### Shortcuts: `\or`
 
 ## `↔`
 ###### ASCII: `<->`
-###### Shortcut(s): `\iff, \lr`
+###### Shortcuts: `\iff, \lr`
 
 ## `¬`
-###### Shortcut(s): `\not, \neg`
+###### Shortcuts: `\not, \neg`
 
 ## `|>`
 
