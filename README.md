@@ -8,14 +8,22 @@
   lowercase letters for identifiers, names, variables, and uppercase letters
   for terms.
 
+* In anchors, the following symbols are filtered out, i.e. mapped to the empty
+  string:
+
+  1. `:`
+  2. `=`
+  3. `(`
+  4. `)`
+
 ## How to use this field guide
 
 ## Symbols and operators
 
 * [`-- a`](#---a-comment) (comment)
 * [`a : b`](#a--b-type-declaration) (type declaration)
-* [`a := b`](#a----b-definition) (definition)
-* [`a = b`](#=) (equality)
+* [`a := b`](#a--b-definition) (definition)
+* [`a = b`](#a--b-equality) (equality)
 * [`a → b`](#→) (function arrow)
 * [`def a := b`]
 * [`#check a`]
