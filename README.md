@@ -1,14 +1,5 @@
 # Index
 
-## Naked operators
-* [`--`](#--) (comments)
-* [`:`](#https://github.com/langfield/Cheat.lean/blob/master/README.md#a--b) (type declaration)
-* [`:=`](#:=) (value definition)
-* [`=`](#=) (equality proposition)
-* [`→`](#→) (function arrow)
-* [`def`]
-* [`#check`]
-
 ## Operators with dummy symbols
 * [`-- a`](#--) (comments)
 * [`a : b`](#https://github.com/langfield/Cheat.lean/blob/master/README.md#a--b) (type declaration)
@@ -20,7 +11,7 @@
 
 # Syntax
 
-## `-- a`
+## `-- a` (comment)
 Declares an inline comment.
 
 
@@ -39,7 +30,7 @@ We declare a constant symbol `x` to have type `Nat` with value `0`.
 def x : Nat := 0
 ```
 
-## `:=`
+## `a := b` (definition)
 
 Defines the value of an identifier.
 
@@ -51,13 +42,13 @@ We declare the symbol/identifier `x` to be a term of type `Nat` whose value is
 def x : Nat := 0
 ```
 
-## `=`
+## `=` (equality)
 
 Constructs a proposition (`Prop`) that asserts that the left-hand side is equal
 (in the mathematical sense) to the right hand side.
 
 
-## `→`
+## `→` (function arrow)
 ###### Shortcuts: `\to, \r, \imp`
 ###### ASCII: `->`
 ## `.`
@@ -85,23 +76,48 @@ parameter `x` to `x + 5`_.
 We could write this in mathematical notation as $x \mapsto x + 5$.
 
 ## `;`
+
 ## `_`
-## `@`
-Makes all the arguments to a theorem or definition explicit.
+
+## `@a`
+
+Makes all the arguments to `a` (e.g. theorem or definition) explicit.
+
 ## `∀`
+
+The "for all" quantifier.
 ## `∃`
+
+The "exists" quantifier.
+
 ## `::`
+The cons operator.
+
 ## `(· + b)`
+
 Creates a function from an arbitrary infix operator (`+` is used above as an
 example). Then `·` serves as a placeholder. The notation is activated with
 parentheses.
 ## `..`
 Provides missing explicit arguments as `_`.
+
 ## `|`
 Separates constructors within an inductive type declaration.
 
+## `a : @& b`
+
+The symbol in in question is `@&`.
+
+Indicates that an FFI function parameter is a "borrowed reference". This can be
+thought of as forcing the parameter to be 'passed-by-reference' instead of
+'passed-by-value'. Ignored on pure Lean 4 functions, according to Sebastian.
+
 
 # Infoview
+
+## `⊢`
+
+Indicates the goal (e.g. the claim when proving a theorem).
 
 ## `?a`
 
@@ -116,6 +132,12 @@ Declares a multiline comment.
 ## `/-- a -/`
 Declares a multiline comment.
 ## `(a)`
+
+## `@[a] b`
+
+Assigns attribute `a` to the object `b`. This is shorthand for `attribute [a] b`.
+
+Can also be used during a declaration, e.g. in `@[a] def b := c`.
 
 ## `⟨a1, a2, ..., an⟩`
 
@@ -205,7 +227,30 @@ Returns a copy of the record `a` with the `b` field's value replaced with `c`.
 
 ## `notation`
 ## `import`
+
+
 ## `attribute`
+
+#### Syntax: `attribute [a] b`
+#### Syntax: `attribute [a] <declaration> b := c`
+
+## `class`
+
+Define a type class.
+
+##### Example
+
+```lean
+class Add (a : Type) where
+  add : a -> a -> a
+```
+
+## `instance`
+
+Registers an instance of a type class.
+
+Assigns attribute `a` to the object `b`.
+
 ## `local`
 Causes commands to only have effect until the current `section` or `namespace`
 is closed, or until the end of the file.
@@ -263,6 +308,22 @@ Prints information about an identifier.
 
 ## `¬`
 ###### Shortcut(s): `\not, \neg`
+
+## `|>`
+
+The forward pipeline operator.
+
+Applies the function on the right-hand side to the argument on the left-hand
+side in such a way that functions can be chained/composed in a nice-looking
+way.
+
+## `<|`
+
+The backward pipeline operator.
+
+Applies the function on the left-hand side to the argument on the right-hand
+side in such a way that functions can be chained/composed in a nice-looking
+way.
 
 
 # Miscellaneous
