@@ -107,14 +107,15 @@ Separates:
 2. The fields of a structure (e.g. in `{x := 3, y := 6}`).
 3. The elements of a list (e.g. in `[1, 2, 3]`).
 
-## `=>` (mapsto)
+## `a => b` (mapsto)
 
 Indicates the expression yielded by a lambda function given its arguments. Can
 be read in English as "maps to", and is in most cases synonymous with the
 mathematical notation $\mapsto$.
 
 ##### Example
-We declare a lambda function that adds `5` to its argument:
+We construct a lambda function on the natural numbers that adds `5` to its
+argument:
 ```lean
 λ (x : Nat) => x + 5
 ```
@@ -134,6 +135,7 @@ Makes all the arguments to `a` (e.g. theorem or definition) explicit.
 ## `∀`
 
 The "for all" quantifier.
+
 ## `∃`
 
 The "exists" quantifier.
