@@ -16,6 +16,71 @@
 * [`def`](#def)
 * [`notation`](#notation)
 
+* [`theorem`](#theorem)
+* [`def`](#def)
+* [`class`](#class)
+* [`structure`](#structure)
+* [`instance`](#instance)
+* [`set_option`](#set_option)
+* [`example`](#example)
+* [`inductive`](#inductive)
+* [`coinductive`](#coinductive)
+* [`axiom`](#axiom)
+* [`constant`](#constant)
+* [`partial`](#partial)
+* [`unsafe`](#unsafe)
+* [`private`](#private)
+* [`protected`](#protected)
+* [`if`](#if)
+* [`then`](#then)
+* [`else`](#else)
+* [`universe`](#universe)
+* [`variable`](#variable)
+* [`variables`](#variables)
+* [`import`](#import)
+* [`open`](#open)
+* [`export`](#export)
+* [`theory`](#theory)
+* [`prelude`](#prelude)
+* [`renaming`](#renaming)
+* [`hiding`](#hiding)
+* [`exposing`](#exposing)
+* [`calc`](#calc)
+* [`match`](#match)
+* [`with`](#with)
+* [`do`](#do)
+* [`by`](#by)
+* [`let`](#let)
+* [`extends`](#extends)
+* [`for`](#for)
+* [`in`](#in)
+* [`unless`](#unless)
+* [`try`](#try)
+* [`catch`](#catch)
+* [`finally`](#finally)
+* [`mutual`](#mutual)
+* [`mut`](#mut)
+* [`return`](#return)
+* [`continue`](#continue)
+* [`break`](#break)
+* [`where`](#where)
+* [`rec`](#rec)
+* [`syntax`](#syntax)
+* [`macro_rules`](#macro_rules)
+* [`macro`](#macro)
+* [`deriving`](#deriving)
+* [`fun`](#fun)
+* [`section`](#section)
+* [`namespace`](#namespace)
+* [`end`](#end)
+* [`infix`](#infix)
+* [`infixl`](#infixl)
+* [`infixr`](#infixr)
+* [`postfix`](#postfix)
+* [`prefix`](#prefix)
+* [`notation`](#notation)
+
+
 ## #Commands
 * [`#check`](#check)
 * [`#check_failure`](#check_failure)
@@ -258,24 +323,6 @@ We declare the symbol/identifier `x` to be a term of type `Nat` whose value is
 def x : Nat := 1
 ```
 
-## `universe`
-## `fun`
-## `λ`
-Alias for the keyword `fun`.
-## `if`
-## `then`
-## `else`
-## `let`
-## `variable`
-## `section`
-## `end`
-## `namespace`
-## `open`
-## `axiom`
-## `theorem`
-## `show`
-## `from`
-
 ## `example`
 #### Syntax: `example : a := b`
 Elaborates `b` and checks that it has type `a`, without adding it to the
@@ -332,32 +379,77 @@ Registers an instance of a type class.
 Assigns attribute `a` to the object `b`.
 
 ## `local`
+
 Causes commands to only have effect until the current `section` or `namespace`
 is closed, or until the end of the file.
-## `protected`
-## `hiding`
-## `renaming`
-## `export`
-## `infixl`
-## `infix`
-## `infixr`
-## `prefix`
-## `postfix`
-## `set_option`
+
+## `let`
+
+Defines a variable in a local scope (e.g. inside a function).
+
 ## `inductive`
+
+Defines an inductive type.
+
+##### Example
+
+We define an inductive type called `Weekday`:
+
+```lean
+inductive Weekday where
+  | sunday : Weekday
+  | monday : Weekday
+  | tuesday : Weekday
+  | wednesday : Weekday
+  | thursday : Weekday
+  | friday : Weekday
+  | saturday : Weekday
+```
+
+The names after the `|` are called constructors or elements. We are defining
+them in this block, i.e. they need not be predefined elsewhere.
+
+
 ## `where`
+
+Defines the constructors of an `inductive` type, `structure`, `class`,
+`instance`, or the return type of a `def`.
+
+The syntax for these use cases are:
+
+* `inductive A (a₁ : α₁) ... (aₙ : αₙ) where`
+* `structure A (a₁ : α₁) ... (aₙ : αₙ) where`
+* `structure A (a₁ : α₁) ... (aₙ : αₙ) extends B₁, ..., Bₙ where`
+* `class A (a₁ : α₁) ... (aₙ : αₙ) : β where`
+* `instance : A₁ ... Aₙ where`
+* `def a (b₁ : β₁) ... (bₙ : βₙ) : γ where`
+
+
 ## `deriving`
+
+Instructs Lean to auto-generate an instance of a type class.
+
 ## `extern`
 An attribute declaring a definition as being defined via the Lean C FFI
 (foreign function interface).
 
+## `structure`
+
+Defines an inductive type along with all of its projection functions and
+introduces a namespace with the same name.
+
 # Tactics
 
 ## `intro`
+
 ## `have`
+
 Introduces an auxiliary subgoal in a proof.
+
 ## `calc`
+
 Starts a calculational proof.
+
 ## `sorry`
 
 # #Commands
