@@ -1,8 +1,8 @@
 
 
-> "Lean 4 has a type system roughly as strong as grain alcohol."
-
 # Index
+
+> "Lean 4 has a type system roughly as strong as grain alcohol."
 
 ## Symbols and operators
 
@@ -14,9 +14,12 @@
 
 ## Keywords
 * [`def`](#def)
+* [`notation`](#notation)
 
 ## #Commands
 * [`#check`](#check)
+* [`#check_failure`](#check_failure)
+* [`#eval`](#eval)
 
 # Symbols and operators
 
@@ -40,9 +43,11 @@ def x : Nat := 0
 ```
 
 ##### Example
-We define a constant symbol `x` to have type `Nat` with value `0`.
+We define a function `multiply` which takes two integers and returns their
+product:
 ```lean
-def x : Nat := 0
+def multiply (a b : Int) : Int := a * b
+#eval multiply 7 (-8)     ■ -56
 ```
 
 ## `a := b` (definition)
@@ -274,6 +279,17 @@ Proves a proposition by a tactic.
 Returns a copy of the record `a` with the `b` field's value replaced with `c`.
 
 ## `notation`
+
+Declares new notation for a term in the form of a string literal.
+
+##### Example
+We declare nice notation for the integers:
+```lean
+notation "ℤ" => Int
+def identity (x : ℤ) : ℤ := x
+#check identity
+```
+
 ## `import`
 
 
@@ -330,11 +346,35 @@ Starts a calculational proof.
 
 # #Commands
 
+> "In Lean, auxiliary commands that query the system for information typically
+begin with the hash (#) symbol."
+
+- Theorem Proving in Lean 4
+
 ## `#check`
+
+Asks Lean to report the type of its argument inside our editor/IDE.
+
+##### Example
+We define a function and then `#check` it in our editor:
+```lean
+def identity (x : Nat) : Nat := x
+#check identity     ■ identity : Nat → Nat
+```
+The square denotes the beginning of the `#check` output.
+
+## `#check_failure`
+
+Only succeeds when the given term is not type-correct.
+
 ## `#eval`
+
+Asks Lean to evaluate the given expression.
+
 ## `#reduce`
 ## `#print`
 Prints information about an identifier.
+
 
 
 # Operators

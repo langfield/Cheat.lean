@@ -43,6 +43,10 @@ def p₁ : Point Int := Point.mk 0 0
 #check p₁
 #eval p₁
 
+-- Checking multiple things at the same time (you can't).
+#check 0 -- This works!
+-- #check 0 0 (This doesn't work.)
+
 -- Pipelining.
 def add1 x := x + 1
 def times2 x := x * 2
@@ -59,6 +63,27 @@ def identity2 (x : Nat) : Nat := x
 
 #eval identity 5
 #eval identity2 6
+
+-- Multiple parameters of the same type declared within the same declaration.
+
+def add_two_naturals (a b : Nat) : Nat := a + b
+
+notation "ℤ" => Int
+
+#check add_two_naturals
+#eval add_two_naturals 4 5
+
+def multiply (a b : Int) : Int := a * b
+#eval multiply 7 (-8)
+
+-- Array literal declaration and subscripts.
+#eval #['a', 'b', 'c'][4]
+#eval #['b', 'c', 'd'][4]
+#eval #[1, 2, 3][4]
+#eval #["a", "aa", "aaa"][4]
+
+def add_two_naturals_with_shorthand_notation_for_integers (a b : ℤ) : ℤ := a + b
+#eval add_two_naturals_with_shorthand_notation_for_integers 8 9
 
 def main : IO Unit :=
   -- IO.println s!"Hello, {hello}!"
