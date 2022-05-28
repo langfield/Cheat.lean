@@ -1,5 +1,6 @@
 section
 variable (x y : Nat)
+notation "ℤ" => Int
 
 def double := x + x
 
@@ -16,7 +17,6 @@ theorem t1 : double (x + y) = double x + double y := by
 
 theorem t2 : double (x * y) = double x * y := by
   simp [double, Nat.add_mul]
-
 end
 
 def twice (f : Nat → Nat) (a : Nat) :=
@@ -26,6 +26,20 @@ def foo (x : Nat) := x + 2
 def goo (x : Nat) : Nat := x + 2
 #check foo
 #check goo
+
+-- The `where` syntax.
+
+structure IntWithParity where
+  value : ℤ
+  even  : Bool
+  deriving Repr
+
+def increment_int_with_parity (x : IntWithParity) : IntWithParity where
+  value := x.value + 1
+  even  := ¬x.even
+
+#eval increment_int_with_parity (IntWithParity.mk 0 true)
+#eval increment_int_with_parity <| increment_int_with_parity <| (IntWithParity.mk 0 true)
 
 universe u
 
@@ -38,7 +52,18 @@ structure Point (α : Type u) where
 #check Point.mk
 #check Point.mk 0 0
 
+def eight := 8
+#eval s!"The cube of two is {eight}"
+
 def p₁ : Point Int := Point.mk 0 0
+
+-- When can we use `let`?
+def fn :=
+  let a := 2
+  a
+-- let a := 0 (This doesn't work, because `let` must be in a local scope?)
+
+#eval fn
 
 #check p₁
 #eval p₁
@@ -70,8 +95,6 @@ def identity2 (x : Nat) : Nat := x
 -- Multiple parameters of the same type declared within the same declaration.
 
 def add_two_naturals (a b : Nat) : Nat := a + b
-
-notation "ℤ" => Int
 
 #check add_two_naturals
 #eval add_two_naturals 4 5
