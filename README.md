@@ -1,29 +1,8 @@
 
+
+> "Lean 4 has a type system roughly as strong as grain alcohol."
+
 # Index
-
-## Notes
-
-* It may be necessary to use different dummy symbol sets for different terms.
-  For example, `a` in `def a := b` must be an identifier, but we use `a`
-  elsewhere as an arbitrary term (e.g. in `a = b`. One option is to use
-  lowercase letters for identifiers, names, variables, and uppercase letters
-  for terms. As is common in the Lean 4 docs, greek letter could be used for
-  types. So we would write an arbitrary type declaration as `a : α`. The
-  distinction between terms and types is crucial (even though, technically, all
-  types are terms, since they have type `Type u`), especially for beginners.
-  However, the distinction between which operators and keywords are applicable
-  to identifiers and which are applicable to arbitrary terms may be clear
-  enough from the examples given.
-
-* In anchors (links to markdown subsections of the form `#token1-token2`), the
-  following symbols are filtered out, i.e. mapped to the empty string:
-
-  1. `:`
-  2. `=`
-  3. `(`
-  4. `)`
-
-## How to use this field guide
 
 ## Symbols and operators
 
@@ -52,10 +31,16 @@ Declares an inline comment.
 
 ## `a : α` (type declaration)
 
-Indicates the type of a term.
+Indicates the type of a one or more terms.
 
 ##### Example
-We declare a constant symbol `x` to have type `Nat` with value `0`.
+We define a constant symbol `x` to have type `Nat` with value `0`.
+```lean
+def x : Nat := 0
+```
+
+##### Example
+We define a constant symbol `x` to have type `Nat` with value `0`.
 ```lean
 def x : Nat := 0
 ```
@@ -107,7 +92,7 @@ Separates:
 2. The fields of a structure (e.g. in `{x := 3, y := 6}`).
 3. The elements of a list (e.g. in `[1, 2, 3]`).
 
-## `a => b` (mapsto)
+## `a => b` (maps to)
 
 Indicates the expression yielded by a lambda function given its arguments. Can
 be read in English as "maps to", and is in most cases synonymous with the
@@ -123,6 +108,19 @@ In English, we could say that this lambda function _maps the natural number
 parameter `x` to `x + 5`_.
 
 We could write this in mathematical notation as $x \mapsto x + 5$.
+
+## `"a" => b`
+
+Declares notation via the `notation` keyword. Specifically, makes the string
+literal on the left-hand side an alias for the term on the right-hand side.
+
+##### Example
+We declare nice notation for the integers:
+```lean
+notation "ℤ" => Int
+def identity (x : ℤ) : ℤ := x
+#check identity
+```
 
 ## `;`
 
@@ -391,4 +389,29 @@ Lean 4 commands look like `#print`, `#check`, `#eval`, etc. They tell the
 compiler to perform a certain action.
 
 ### Term
+
+## Notes
+
+* It may be necessary to use different dummy symbol sets for different terms.
+  For example, `a` in `def a := b` must be an identifier, but we use `a`
+  elsewhere as an arbitrary term (e.g. in `a = b`. One option is to use
+  lowercase letters for identifiers, names, variables, and uppercase letters
+  for terms. As is common in the Lean 4 docs, greek letter could be used for
+  types. So we would write an arbitrary type declaration as `a : α`. The
+  distinction between terms and types is crucial (even though, technically, all
+  types are terms, since they have type `Type u`), especially for beginners.
+  However, the distinction between which operators and keywords are applicable
+  to identifiers and which are applicable to arbitrary terms may be clear
+  enough from the examples given.
+
+* In anchors (links to markdown subsections of the form `#token1-token2`), the
+  following symbols are filtered out, i.e. mapped to the empty string:
+
+  1. `:`
+  2. `=`
+  3. `(`
+  4. `)`
+
+## How to use this field guide
+
 

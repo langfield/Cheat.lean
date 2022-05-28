@@ -51,6 +51,7 @@ def times2 x := x * 2
 #eval 100 |> add1 |> times2
 #eval times2 <| add1 <| 100
 
+-- Two different ways of defining a function.
 def identity : Nat → Nat := λ x => x
 def identity2 (x : Nat) : Nat := x
 
