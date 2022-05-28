@@ -47,6 +47,9 @@ def p₁ : Point Int := Point.mk 0 0
 #check 0 -- This works!
 -- #check 0 0 (This doesn't work.)
 
+-- Can we use string literals on the left-hand side of a lambda `=>` definition? No.
+#check_failure λ "a" => "a"
+
 -- Pipelining.
 def add1 x := x + 1
 def times2 x := x * 2

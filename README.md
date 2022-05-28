@@ -99,9 +99,17 @@ Separates:
 
 ## `a => b` (maps to)
 
-Indicates the expression yielded by a lambda function given its arguments. Can
-be read in English as "maps to", and is in most cases synonymous with the
+Indicates the term returned by a lambda function given its arguments. Can be
+read in English as "maps to", and is in most cases synonymous with the
 mathematical notation $\mapsto$.
+
+Can be used in pattern-matching blocks.
+
+When used with the `notation` keyword, makes the string literal on the
+left-hand side an alias for the term on the right-hand side. See the second
+example.
+
+#### TODO: Add example with longer telescope.
 
 ##### Example
 We construct a lambda function on the natural numbers that adds `5` to its
@@ -114,11 +122,6 @@ parameter `x` to `x + 5`_.
 
 We could write this in mathematical notation as $x \mapsto x + 5$.
 
-## `"a" => b`
-
-Declares notation via the `notation` keyword. Specifically, makes the string
-literal on the left-hand side an alias for the term on the right-hand side.
-
 ##### Example
 We declare nice notation for the integers:
 ```lean
@@ -127,7 +130,20 @@ def identity (x : ℤ) : ℤ := x
 #check identity
 ```
 
+## `s!"a{b}"`
+
+Constructs an interpolated string. See https://leanprover.github.io/lean4/doc/stringinterp.html.
+
+##### Example
+We construct a string containing an integer.
+```lean
+def eight := 8
+#eval s!"The cube of two is {eight}"    ■ "The cube of two is 8"
+```
+
 ## `;`
+
+Separates tactics in a `by`-statement.
 
 ## `_`
 
