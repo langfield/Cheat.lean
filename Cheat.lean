@@ -1,5 +1,7 @@
 /--
 
+# Cheat.lean
+
 > "Lean 4 has a type system roughly as strong as grain alcohol."
 
 `Cheat.lean` is a field guide to the syntax, symbols, operators, and commands
