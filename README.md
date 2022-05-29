@@ -6,12 +6,12 @@
 
 `Cheat.lean` is a field guide to the syntax, symbols, operators, and commands
 of the Lean 4 functional programming language. It is designed to be as friendly
-as possible to users uninitiated to purely functional programming, type theory,
-and higher mathematics. It is **not** any of the following: tutorial, how-to
-guide, expository documentation. This guide will not teach you to how to
-program in Lean 4. It is as terse as possible, eschewing explanation of use
-cases and design motivations. It's sole purpose is to be an answer to the
-question "where should I look if I have no idea what this notation even does?"
+as possible to users unfamiliar with purely functional programming or type theory.
+
+This guide will not teach you to how to program in Lean 4. It's sole purpose is
+to be an answer to the question:
+
+> "What does this notation do?"
 
 ## Symbols and operators
 
@@ -21,12 +21,10 @@ question "where should I look if I have no idea what this notation even does?"
 * [`a = b`](#a--b-equality) (equality)
 * [`α → β`](#α-→-β-function-arrow) (function arrow)
 
-## Keywords
+## Commands
 * [`def`](#def)
 * [`notation`](#notation)
-
 * [`theorem`](#theorem)
-* [`def`](#def)
 * [`class`](#class)
 * [`structure`](#structure)
 * [`instance`](#instance)
@@ -162,14 +160,6 @@ def identity (x : Nat) : Nat := x
 ## `a.b` (field accessor)
 
 Accesses the field `b` of the term `a`.
-
-## `,` (comma)
-
-Separates:
-
-1. Constructors within an inductive type declaration.
-2. The fields of a structure (e.g. in `{x := 3, y := 6}`).
-3. The elements of a list (e.g. in `[1, 2, 3]`).
 
 ## `a => b` (maps to)
 

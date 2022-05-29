@@ -1,23 +1,27 @@
-section
-variable (x y : Nat)
 notation "ℤ" => Int
 
-def double := x + x
+section
+  variable (x y : Nat)
 
-#check double y
-#check double (2 * x)
+  def double := x + x
 
-attribute [local simp] Nat.add_assoc Nat.add_comm Nat.add_left_comm
+  #check double y
+  #check double (2 * x)
 
-theorem t1 : double (x + y) = double x + double y := by
-  simp [double]
+  attribute [local simp] Nat.add_assoc Nat.add_comm Nat.add_left_comm
 
-#check t1 y
-#check t1 (2 * x)
+  theorem t1 : double (x + y) = double x + double y := by
+    simp [double]
 
-theorem t2 : double (x * y) = double x * y := by
-  simp [double, Nat.add_mul]
+  #check t1 y
+  #check t1 (2 * x)
+
+  theorem t2 : double (x * y) = double x * y := by
+    simp [double, Nat.add_mul]
 end
+
+theorem eight_equals_twice_four : 8 = 2 * 4 := by
+  simp
 
 def twice (f : Nat → Nat) (a : Nat) :=
   f (f a)
