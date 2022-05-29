@@ -99,7 +99,7 @@ to be an answer to the question:
 Declares an inline comment.
 
 
-##### Example
+#### Example
 ```lean
 -- This a comment.
 ```
@@ -108,13 +108,13 @@ Declares an inline comment.
 
 Indicates the type of a one or more terms.
 
-##### Example
+#### Example
 We define a constant symbol `x` to have type `Nat` with value `0`.
 ```lean
 def x : Nat := 0
 ```
 
-##### Example
+#### Example
 We define a function `multiply` which takes two integers and returns their
 product:
 ```lean
@@ -126,7 +126,7 @@ def multiply (a b : Int) : Int := a * b
 
 Defines the value of an identifier.
 
-##### Example
+#### Example
 
 We declare the symbol/identifier `x` to be a term of type `Nat` whose value is
 `0`:
@@ -146,7 +146,7 @@ Constructs a proposition (`Prop`) that asserts that the left-hand side is equal
 
 Constructs a function type from the type `a` to the type `b`.
 
-##### Example
+#### Example
 
 We define an identity function on natural numbers, and observe that the type of
 our function (displayed when we use the transitory command `#check` in our
@@ -175,7 +175,7 @@ example.
 
 #### TODO: Add example with longer telescope.
 
-##### Example
+#### Example
 We construct a lambda function on the natural numbers that adds `5` to its
 argument:
 ```lean
@@ -186,7 +186,7 @@ parameter `x` to `x + 5`_.
 
 We could write this in mathematical notation as $x \mapsto x + 5$.
 
-##### Example
+#### Example
 We declare nice notation for the integers:
 ```lean
 notation "ℤ" => Int
@@ -198,7 +198,7 @@ def identity (x : ℤ) : ℤ := x
 
 Constructs an interpolated string. See https://leanprover.github.io/lean4/doc/stringinterp.html.
 
-##### Example
+#### Example
 We construct a string containing an integer.
 ```lean
 def eight := 8
@@ -279,7 +279,7 @@ Can also be used during a declaration, e.g. in `@[a] def b := c`.
 Constructs an inductive type with arguments `a1, a2, ..., an` in cases where
 Lean can infer the type of the expression.
 
-##### Example
+#### Example
 
 We define `p` to be an ordered pair where the first element is a natural number
 and the second element is an integer. Our ordered pair is represented in Lean
@@ -315,7 +315,7 @@ corresponding to the parameters `a₁, a₂, ..., aₙ`. The notation `(aᵢ : �
 indicates that the parameter `aᵢ` has type `αᵢ`. This list of parameters
 together with their types is called a **context**.
 
-##### Example
+#### Example
 We declare the symbol/identifier `x` to be a term of type `Nat` whose value is
 `1`:
 ```lean
@@ -344,7 +344,7 @@ Returns a copy of the record `a` with the `b` field's value replaced with `c`.
 
 Declares new notation for a term in the form of a string literal.
 
-##### Example
+#### Example
 We declare nice notation for the integers:
 ```lean
 notation "ℤ" => Int
@@ -364,7 +364,7 @@ def identity (x : ℤ) : ℤ := x
 
 Define a type class.
 
-##### Example
+#### Example
 
 ```lean
 class Add (a : Type) where
@@ -390,7 +390,7 @@ Defines a variable in a local scope (e.g. inside a function).
 
 Defines an inductive type.
 
-##### Example
+#### Example
 
 We define an inductive type called `Weekday`:
 
@@ -462,7 +462,7 @@ begin with the hash (#) symbol."
 
 Asks Lean to report the type of its argument inside our editor/IDE.
 
-##### Example
+#### Example
 We define a function and then `#check` it in our editor:
 ```lean
 def identity (x : Nat) : Nat := x
