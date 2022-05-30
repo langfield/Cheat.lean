@@ -13,6 +13,7 @@ to be an answer to the question:
 
 > "What does this notation do?"
 
+
 ## Symbols and operators
 
 * [`-- a`](#---a-comment) (comment)
@@ -20,6 +21,9 @@ to be an answer to the question:
 * [`a := b`](#a--b-definition) (definition)
 * [`a = b`](#a--b-equality) (equality)
 * [`α → β`](#α-→-β-function-arrow) (function arrow)
+* [`s!"a{b}"`](#sab) (string interpolation)
+* [`a.b`](#ab-dot-notation) (dot notation)
+
 
 ## Commands
 * [`def`](#def)
@@ -89,9 +93,41 @@ to be an answer to the question:
 
 
 ## #Commands
+
+> "In Lean, auxiliary commands that query the system for information typically
+begin with the hash (#) symbol."
+
+- Theorem Proving in Lean 4
+
 * [`#check`](#check)
 * [`#check_failure`](#check_failure)
 * [`#eval`](#eval)
+
+
+## Attributes
+
+> "Objects in Lean can bear attributes, which are tags that are associated to them, sometimes with additional
+data. You can assign an attribute foo to a object by preceding its declaration with the annotation attribute
+[foo] or, more concisely, @[foo]."
+
+- The Lean Reference Manual, Release 3.3.0, §5.4, p. 40
+
+* [`[simp]`]
+* [`[inline]`]
+* [`[reducible]`]
+* [`[irreducible]`]
+* [`[specialize]`]
+
+
+
+
+
+
+
+
+
+
+
 
 # Symbols and operators
 
@@ -157,9 +193,24 @@ def identity (x : Nat) : Nat := x
 #check identity     ■ identity : Nat → Nat
 ```
 
-## `a.b` (field accessor)
+## `a.b` (dot notation)
 
 Accesses the field `b` of the term `a`.
+
+#### Example
+
+We declare a structure, construct an instance of that structure, and access one
+of its fields:
+
+```lean
+structure CarState where
+  wheels : Nat
+  doors : Nat
+  name : String
+
+def jeep := CarState.mk 4 2 "Larry"
+#eval jeep.name
+```
 
 ## `a => b` (maps to)
 
@@ -194,9 +245,11 @@ def identity (x : ℤ) : ℤ := x
 #check identity
 ```
 
-## `s!"a{b}"`
+## `s!"a{b}"` (string interpolation)
 
-Constructs an interpolated string. See https://leanprover.github.io/lean4/doc/stringinterp.html.
+Constructs an interpolated string. In plain English, this allows you to embed
+the string representation of a term inside a string. See
+https://leanprover.github.io/lean4/doc/stringinterp.html.
 
 #### Example
 We construct a string containing an integer.
@@ -204,10 +257,6 @@ We construct a string containing an integer.
 def eight := 8
 #eval s!"The cube of two is {eight}"    ■ "The cube of two is 8"
 ```
-
-## `;`
-
-Separates tactics in a `by`-statement.
 
 ## `_`
 
@@ -224,6 +273,7 @@ The "for all" quantifier.
 The "exists" quantifier.
 
 ## `::`
+
 The cons operator.
 
 ## `(· + b)`
@@ -237,28 +287,15 @@ Provides missing explicit arguments as `_`.
 ## `|`
 Separates constructors within an inductive type declaration.
 
-## `a : @& b`
+## `(a : @& α)`
 
 The symbol in in question is `@&`.
 
 Indicates that an FFI function parameter is a "borrowed reference". This can be
 thought of as forcing the parameter to be 'passed-by-reference' instead of
-'passed-by-value'. Ignored on pure Lean 4 functions, according to Sebastian.
+'passed-by-value'.
 
-
-# Infoview
-
-## `⊢`
-
-Indicates the goal (e.g. the claim when proving a theorem).
-
-## `?a`
-
-Indicates that the Lean does not have enough information to infer the type of
-`a`.
-
-
-# Enclosing glyphs
+Ignored on pure Lean 4 functions, according to Sebastian.
 
 ## `/- a -/`
 Declares a multiline comment.
@@ -291,14 +328,56 @@ def p : Nat × Int := ⟨1, 2⟩
 
 
 ## `{a}`
+
 ## `"a"`
+
 ## `[a, b, c]`
 Groups hypotheses to be used as an argument to a tactic.
+
 ## `‹a›`
 ###### Shortcuts: `\f<, \f>`
 Fills in the proof of the proposition `a : Prop`.
+
 ## `⦃a⦄`
 Declares `a` as a weak implicit argument.
+
+
+## `|>`
+
+The forward pipeline operator.
+
+Applies the function on the right-hand side to the argument on the left-hand
+side in such a way that functions can be chained/composed in a nice-looking
+way.
+
+## `<|`
+
+The backward pipeline operator.
+
+Applies the function on the left-hand side to the argument on the right-hand
+side in such a way that functions can be chained/composed in a nice-looking
+way.
+
+## `×`
+## `Σ`
+
+## `∧`
+###### ASCII: `/\`
+###### Shortcuts: `\and`
+
+## `∨`
+###### ASCII: `\/`
+###### Shortcuts: `\or`
+
+## `↔`
+###### ASCII: `<->`
+###### Shortcuts: `\iff, \lr`
+
+## `¬`
+###### Shortcuts: `\not, \neg`
+
+Negates a term of type `Bool`.
+
 
 # Keywords
 
@@ -453,11 +532,6 @@ Starts a calculational proof.
 
 # #Commands
 
-> "In Lean, auxiliary commands that query the system for information typically
-begin with the hash (#) symbol."
-
-- Theorem Proving in Lean 4
-
 ## `#check`
 
 Asks Lean to report the type of its argument inside our editor/IDE.
@@ -483,42 +557,17 @@ Asks Lean to evaluate the given expression.
 Prints information about an identifier.
 
 
+# Infoview
 
-# Operators
+## `⊢`
 
-## `×`
-## `Σ`
+Indicates the goal (e.g. the claim when proving a theorem).
 
-## `∧`
-###### ASCII: `/\`
-###### Shortcuts: `\and`
+## `?a`
 
-## `∨`
-###### ASCII: `\/`
-###### Shortcuts: `\or`
+Indicates that the Lean does not have enough information to infer the type of
+`a`.
 
-## `↔`
-###### ASCII: `<->`
-###### Shortcuts: `\iff, \lr`
-
-## `¬`
-###### Shortcuts: `\not, \neg`
-
-## `|>`
-
-The forward pipeline operator.
-
-Applies the function on the right-hand side to the argument on the left-hand
-side in such a way that functions can be chained/composed in a nice-looking
-way.
-
-## `<|`
-
-The backward pipeline operator.
-
-Applies the function on the left-hand side to the argument on the right-hand
-side in such a way that functions can be chained/composed in a nice-looking
-way.
 
 
 # Miscellaneous

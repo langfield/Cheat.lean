@@ -115,14 +115,62 @@ def multiply (a b : Int) : Int := a * b
 def add_two_naturals_with_shorthand_notation_for_integers (a b : ℤ) : ℤ := a + b
 #eval add_two_naturals_with_shorthand_notation_for_integers 8 9
 
-def main : IO Unit :=
-  -- IO.println s!"Hello, {hello}!"
-  -- IO.println s!"{double (2 * 2)}"
-  IO.println s!"{1 - 2}"
-  def zero := 1 - 2
-  def x : Nat := 0
-  #print x
-  #print zero
-  #eval twice (fun x => x + 2) 10
-  def p : Nat × Int := ⟨1, 2⟩
-  def r : Int := 0
+inductive Tree (β : Type v) where
+ | leaf : Tree β
+ | node (left : Tree β) (key : Nat) (value : β) (right : Tree β) : Tree β
+deriving Repr
+
+ def walk [ToString β] : Tree β → String
+   | .leaf          => "leaf"
+   | .node l k v r  => s!"node: {k} {v}\n{walk l}\n{walk r}"
+
+/-
+def construct_tree : IO Unit := do
+  let tree : Tree String ← Tree.node (Tree.leaf) 0 "value" (Tree.leaf)
+-/
+
+
+
+-- Exploring `do` notation.
+def main : IO UInt32 := do
+  IO.println "hello"
+  IO.println "world"
+  return 0
+
+-- What does the notation used above in `main` do?
+-- The below is the same function *without* `do` notation.
+-- Let's look at the type of `bind`, as in https://leanprover.github.io/lean4/doc/do.html
+#check bind
+
+-- It's `{m : Type u_1 → Type u_2} → [self : Bind m] → {α β : Type u_1} → m α → (α → m β) → m β`
+-- And ignoring all the implicit arguments, we have `m α → (α → m β) → m β`.
+-- Well, what are `m α` and `(α → m β)` in the below?
+def mainInt : IO UInt32 :=
+  bind (IO.println "hello") fun _ =>
+  bind (IO.println "world") fun _ =>
+  pure 0
+
+-- Let's rewrite `mainInt` to find out:
+def mainIntExpanded : IO UInt32 :=
+  bind (IO.println "hello") (fun _ => bind (IO.println "world") (fun _ => pure 0))
+
+-- So we see the second argument to the first `bind` call is actually
+-- everything from `fun` (which you should recall defines an anonymous lambda
+-- function) in the first line, all the way to the end. This might be obvious
+-- to someone coming from e.g. Haskell, but it was not to me. The hanging
+-- lambda function definition looked like it might be a syntax error. But of
+-- course it isn't because it typechecks.
+
+-- Let's cut out the second bind call to make things easier to look at:
+def mainIntSimplified : IO UInt32 :=
+  bind (IO.println "hello world") (λ _ => pure 0)
+
+-- So   `(IO.println "hello world")`  is our `m α` ...
+-- And  `(λ _ => pure 0)`             is our `(α → m β)`.
+
+-- What are `α` and `β` in this example?
+-- Let's `#check` the arguments to find out.
+def m_α := IO.println "hello world"
+#check m_α
+
+def α_to_m_β := (λ _ => pure 0)

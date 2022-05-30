@@ -20,6 +20,8 @@ to be an answer to the question:
 * [`a := b`](#a--b-definition) (definition)
 * [`a = b`](#a--b-equality) (equality)
 * [`α → β`](#α-→-β-function-arrow) (function arrow)
+* [`s!"a{b}"`](#sab) (string interpolation)
+* [`a.b`](#ab-dot-notation) (dot notation)
 
 ## Commands
 * [`def`](#def)
@@ -194,9 +196,11 @@ def identity (x : ℤ) : ℤ := x
 #check identity
 ```
 
-## `s!"a{b}"`
+## `s!"a{b}"` (string interpolation)
 
-Constructs an interpolated string. See https://leanprover.github.io/lean4/doc/stringinterp.html.
+Constructs an interpolated string. In plain English, this allows you to embed
+the string representation of a term inside a string. See
+https://leanprover.github.io/lean4/doc/stringinterp.html.
 
 #### Example
 We construct a string containing an integer.
@@ -204,10 +208,6 @@ We construct a string containing an integer.
 def eight := 8
 #eval s!"The cube of two is {eight}"    ■ "The cube of two is 8"
 ```
-
-## `;`
-
-Separates tactics in a `by`-statement.
 
 ## `_`
 
@@ -224,6 +224,7 @@ The "for all" quantifier.
 The "exists" quantifier.
 
 ## `::`
+
 The cons operator.
 
 ## `(· + b)`
@@ -237,14 +238,15 @@ Provides missing explicit arguments as `_`.
 ## `|`
 Separates constructors within an inductive type declaration.
 
-## `a : @& b`
+## `(a : @& α)`
 
 The symbol in in question is `@&`.
 
 Indicates that an FFI function parameter is a "borrowed reference". This can be
 thought of as forcing the parameter to be 'passed-by-reference' instead of
-'passed-by-value'. Ignored on pure Lean 4 functions, according to Sebastian.
+'passed-by-value'.
 
+Ignored on pure Lean 4 functions, according to Sebastian.
 
 # Infoview
 
