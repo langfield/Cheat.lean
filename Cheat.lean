@@ -23,10 +23,13 @@ to be an answer to the question:
 * [`α → β`](#α-→-β-function-arrow) (function arrow)
 * [`s!"a{b}"`](#sab) (string interpolation)
 * [`a.b`](#ab-dot-notation) (dot notation)
+* [`a => b`](#ab-maps-to) (dot notation)
+* [`()`] (unit value)
 
 
 ## Commands
 * [`def`](#def)
+* [`let`](#let)
 * [`notation`]
 * [`theorem`]
 * [`class`]
@@ -61,7 +64,6 @@ to be an answer to the question:
 * [`with`]
 * [`do`]
 * [`by`]
-* [`let`]
 * [`extends`]
 * [`for`]
 * [`in`]
@@ -229,8 +231,6 @@ When used with the `notation` keyword, makes the string literal on the
 left-hand side an alias for the term on the right-hand side. See the second
 example.
 
-#### TODO: Add example with longer telescope.
-
 #### Example
 We construct a lambda function on the natural numbers that adds `5` to its
 argument:
@@ -262,6 +262,34 @@ We construct a string containing an integer.
 def eight := 8
 #eval s!"The cube of two is {eight}"    ■ "The cube of two is 8"
 ```
+
+## `()` (unit value)
+
+Constructs a term of type [`Unit`](#Unit). Used mainly at the end of a `do`
+block which exists purely to handle side-effects, e.g. in a function of type
+`IO Unit`.
+
+#### Example
+
+Taken from the Lean 4 manual:
+```lean
+def isGreaterThan0 (x : Nat) : IO Bool := do
+  IO.println s!"value: {x}"
+  return x > 0
+
+def f (x : Nat) : IO Unit := do
+  let c ← isGreaterThan0 x
+  if c then
+    IO.println s!"{x} is greater than 0"
+  else
+    pure ()
+
+#eval f 10
+-- value: 10
+-- 10 is greater than 0
+```
+Note that our last action is `pure ()`, which is done to satisfy the return
+type of `f`. It makes the `else` branch essentially a no-op.
 
 ## `_`
 
@@ -468,7 +496,21 @@ is closed, or until the end of the file.
 
 ## `let`
 
-Defines a variable in a local scope (e.g. inside a function).
+#### Syntax: `let x ← action1; action2`
+
+Simulates a local variable definition within a `do` block. Defines a variable
+in a local scope (e.g. inside a function). Note that the semicolon `;` is
+semantically equivalent to a newline, so another way we could write this is:
+```lean
+let x ← action1
+action2
+```
+and when there are several lines after the line containing `let x ← action1`,
+all of them together constitute `action2`, so `x` remains "in-scope" for all
+subsequent lines.
+
+**Note.** The `do` notation is an embedded domain-specific language used to
+write effectful code. See the [Lean 4 manual](https://leanprover.github.io/lean4/doc/do.html) for details.
 
 ## `inductive`
 
