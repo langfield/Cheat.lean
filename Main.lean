@@ -173,4 +173,7 @@ def mainIntSimplified : IO UInt32 :=
 def m_α := IO.println "hello world"
 #check m_α
 
-def α_to_m_β := (λ _ => pure 0)
+-- We must explicitly set the type we expect below, or we get an `instance
+-- problem stuck` error.
+def α_to_m_β : Unit → IO UInt32 := (λ _ => pure 0)
+#check α_to_m_β

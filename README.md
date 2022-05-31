@@ -13,6 +13,7 @@ to be an answer to the question:
 
 > "What does this notation do?"
 
+
 ## Symbols and operators
 
 * [`-- a`](#---a-comment) (comment)
@@ -23,77 +24,111 @@ to be an answer to the question:
 * [`s!"a{b}"`](#sab) (string interpolation)
 * [`a.b`](#ab-dot-notation) (dot notation)
 
+
 ## Commands
 * [`def`](#def)
-* [`notation`](#notation)
-* [`theorem`](#theorem)
-* [`class`](#class)
-* [`structure`](#structure)
-* [`instance`](#instance)
-* [`set_option`](#set_option)
-* [`example`](#example)
-* [`inductive`](#inductive)
-* [`coinductive`](#coinductive)
-* [`axiom`](#axiom)
-* [`constant`](#constant)
-* [`partial`](#partial)
-* [`unsafe`](#unsafe)
-* [`private`](#private)
-* [`protected`](#protected)
-* [`if`](#if)
-* [`then`](#then)
-* [`else`](#else)
-* [`universe`](#universe)
-* [`variable`](#variable)
-* [`variables`](#variables)
-* [`import`](#import)
-* [`open`](#open)
-* [`export`](#export)
-* [`theory`](#theory)
-* [`prelude`](#prelude)
-* [`renaming`](#renaming)
-* [`hiding`](#hiding)
-* [`exposing`](#exposing)
-* [`calc`](#calc)
-* [`match`](#match)
-* [`with`](#with)
-* [`do`](#do)
-* [`by`](#by)
-* [`let`](#let)
-* [`extends`](#extends)
-* [`for`](#for)
-* [`in`](#in)
-* [`unless`](#unless)
-* [`try`](#try)
-* [`catch`](#catch)
-* [`finally`](#finally)
-* [`mutual`](#mutual)
-* [`mut`](#mut)
-* [`return`](#return)
-* [`continue`](#continue)
-* [`break`](#break)
-* [`where`](#where)
-* [`rec`](#rec)
-* [`syntax`](#syntax)
-* [`macro_rules`](#macro_rules)
-* [`macro`](#macro)
-* [`deriving`](#deriving)
-* [`fun`](#fun)
-* [`section`](#section)
-* [`namespace`](#namespace)
-* [`end`](#end)
-* [`infix`](#infix)
-* [`infixl`](#infixl)
-* [`infixr`](#infixr)
-* [`postfix`](#postfix)
-* [`prefix`](#prefix)
-* [`notation`](#notation)
+* [`notation`]
+* [`theorem`]
+* [`class`]
+* [`structure`]
+* [`instance`]
+* [`set_option`]
+* [`example`]
+* [`inductive`]
+* [`coinductive`]
+* [`axiom`]
+* [`constant`]
+* [`partial`]
+* [`unsafe`]
+* [`private`]
+* [`protected`]
+* [`if`]
+* [`then`]
+* [`else`]
+* [`universe`]
+* [`variable`]
+* [`variables`]
+* [`import`]
+* [`open`]
+* [`export`]
+* [`theory`]
+* [`prelude`]
+* [`renaming`]
+* [`hiding`]
+* [`exposing`]
+* [`calc`]
+* [`match`]
+* [`with`]
+* [`do`]
+* [`by`]
+* [`let`]
+* [`extends`]
+* [`for`]
+* [`in`]
+* [`unless`]
+* [`try`]
+* [`catch`]
+* [`finally`]
+* [`mutual`]
+* [`mut`]
+* [`return`]
+* [`continue`]
+* [`break`]
+* [`where`]
+* [`rec`]
+* [`syntax`]
+* [`macro_rules`]
+* [`macro`]
+* [`deriving`]
+* [`fun`]
+* [`section`]
+* [`namespace`]
+* [`end`]
+* [`infix`]
+* [`infixl`]
+* [`infixr`]
+* [`postfix`]
+* [`prefix`]
+* [`notation`]
+* [`abbrev`]
 
 
 ## #Commands
+
+> "In Lean, auxiliary commands that query the system for information typically
+begin with the hash (#) symbol."
+
+- Theorem Proving in Lean 4
+
 * [`#check`](#check)
 * [`#check_failure`](#check_failure)
 * [`#eval`](#eval)
+
+
+## Attributes
+
+> "Objects in Lean can bear attributes, which are tags that are associated to them, sometimes with additional
+data. You can assign an attribute foo to a object by preceding its declaration with the annotation attribute
+[foo] or, more concisely, @[foo]."
+
+- The Lean Reference Manual, Release 3.3.0, §5.4, p. 40
+
+* [`[simp]`]
+* [`[inline]`]
+* [`[reducible]`]
+* [`[irreducible]`]
+* [`[specialize]`]
+
+
+
+
+
+
+
+
+
+
+
 
 # Symbols and operators
 
@@ -159,9 +194,24 @@ def identity (x : Nat) : Nat := x
 #check identity     ■ identity : Nat → Nat
 ```
 
-## `a.b` (field accessor)
+## `a.b` (dot notation)
 
 Accesses the field `b` of the term `a`.
+
+#### Example
+
+We declare a structure, construct an instance of that structure, and access one
+of its fields:
+
+```lean
+structure CarState where
+  wheels : Nat
+  doors : Nat
+  name : String
+
+def jeep := CarState.mk 4 2 "Larry"
+#eval jeep.name
+```
 
 ## `a => b` (maps to)
 
@@ -248,20 +298,6 @@ thought of as forcing the parameter to be 'passed-by-reference' instead of
 
 Ignored on pure Lean 4 functions, according to Sebastian.
 
-# Infoview
-
-## `⊢`
-
-Indicates the goal (e.g. the claim when proving a theorem).
-
-## `?a`
-
-Indicates that the Lean does not have enough information to infer the type of
-`a`.
-
-
-# Enclosing glyphs
-
 ## `/- a -/`
 Declares a multiline comment.
 ## `/-- a -/`
@@ -293,14 +329,56 @@ def p : Nat × Int := ⟨1, 2⟩
 
 
 ## `{a}`
+
 ## `"a"`
+
 ## `[a, b, c]`
 Groups hypotheses to be used as an argument to a tactic.
+
 ## `‹a›`
 ###### Shortcuts: `\f<, \f>`
 Fills in the proof of the proposition `a : Prop`.
+
 ## `⦃a⦄`
 Declares `a` as a weak implicit argument.
+
+
+## `|>`
+
+The forward pipeline operator.
+
+Applies the function on the right-hand side to the argument on the left-hand
+side in such a way that functions can be chained/composed in a nice-looking
+way.
+
+## `<|`
+
+The backward pipeline operator.
+
+Applies the function on the left-hand side to the argument on the right-hand
+side in such a way that functions can be chained/composed in a nice-looking
+way.
+
+## `×`
+## `Σ`
+
+## `∧`
+###### ASCII: `/\`
+###### Shortcuts: `\and`
+
+## `∨`
+###### ASCII: `\/`
+###### Shortcuts: `\or`
+
+## `↔`
+###### ASCII: `<->`
+###### Shortcuts: `\iff, \lr`
+
+## `¬`
+###### Shortcuts: `\not, \neg`
+
+Negates a term of type `Bool`.
+
 
 # Keywords
 
@@ -455,11 +533,6 @@ Starts a calculational proof.
 
 # #Commands
 
-> "In Lean, auxiliary commands that query the system for information typically
-begin with the hash (#) symbol."
-
-- Theorem Proving in Lean 4
-
 ## `#check`
 
 Asks Lean to report the type of its argument inside our editor/IDE.
@@ -485,42 +558,17 @@ Asks Lean to evaluate the given expression.
 Prints information about an identifier.
 
 
+# Infoview
 
-# Operators
+## `⊢`
 
-## `×`
-## `Σ`
+Indicates the goal (e.g. the claim when proving a theorem).
 
-## `∧`
-###### ASCII: `/\`
-###### Shortcuts: `\and`
+## `?a`
 
-## `∨`
-###### ASCII: `\/`
-###### Shortcuts: `\or`
+Indicates that the Lean does not have enough information to infer the type of
+`a`.
 
-## `↔`
-###### ASCII: `<->`
-###### Shortcuts: `\iff, \lr`
-
-## `¬`
-###### Shortcuts: `\not, \neg`
-
-## `|>`
-
-The forward pipeline operator.
-
-Applies the function on the right-hand side to the argument on the left-hand
-side in such a way that functions can be chained/composed in a nice-looking
-way.
-
-## `<|`
-
-The backward pipeline operator.
-
-Applies the function on the left-hand side to the argument on the right-hand
-side in such a way that functions can be chained/composed in a nice-looking
-way.
 
 
 # Miscellaneous
