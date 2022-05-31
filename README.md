@@ -120,6 +120,10 @@ data. You can assign an attribute foo to a object by preceding its declaration w
 * [`[specialize]`]
 
 
+## Types
+
+*[`Unit`](#Unit)
+
 
 
 
@@ -569,6 +573,17 @@ Indicates the goal (e.g. the claim when proving a theorem).
 Indicates that the Lean does not have enough information to infer the type of
 `a`.
 
+
+# Types
+
+## `Unit`
+
+> A unit type is a type that allows only one value.
+
+In Lean 4, the `Unit` type is often seen in the type `IO Unit` of functions
+with the sole purpose of causing a side effect.
+
+See [wikipedia.org/wiki/Unit_type](https://en.wikipedia.org/wiki/Unit_type).
 
 
 # Miscellaneous
