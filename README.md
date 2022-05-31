@@ -2,7 +2,7 @@
 
 # Cheat.lean
 
-> "Lean 4 has a type system roughly as strong as grain alcohol."
+> Lean 4 has a type system roughly as strong as grain alcohol.
 
 `Cheat.lean` is a field guide to the syntax, symbols, operators, and commands
 of the Lean 4 functional programming language. It is designed to be as friendly
@@ -11,7 +11,7 @@ as possible to users unfamiliar with purely functional programming or type theor
 This guide will not teach you to how to program in Lean 4. It's sole purpose is
 to be an answer to the question:
 
-> "What does this notation do?"
+> What does this notation do?
 
 
 ## Symbols and operators
@@ -24,7 +24,7 @@ to be an answer to the question:
 * [`s!"a{b}"`](#sab) (string interpolation)
 * [`a.b`](#ab-dot-notation) (dot notation)
 * [`a => b`](#ab-maps-to) (dot notation)
-* [`()`] (unit value)
+* `()` ([unit value](#-unit-value))
 
 
 ## Commands
@@ -97,10 +97,10 @@ to be an answer to the question:
 
 ## #Commands
 
-> "In Lean, auxiliary commands that query the system for information typically
-begin with the hash (#) symbol."
+> In Lean, auxiliary commands that query the system for information typically
+begin with the hash (#) symbol.
 
-- Theorem Proving in Lean 4
+\- Theorem Proving in Lean 4
 
 * [`#check`](#check)
 * [`#check_failure`](#check_failure)
@@ -109,11 +109,11 @@ begin with the hash (#) symbol."
 
 ## Attributes
 
-> "Objects in Lean can bear attributes, which are tags that are associated to them, sometimes with additional
+> Objects in Lean can bear attributes, which are tags that are associated to them, sometimes with additional
 data. You can assign an attribute foo to a object by preceding its declaration with the annotation attribute
-[foo] or, more concisely, @[foo]."
+[foo] or, more concisely, @[foo].
 
-- The Lean Reference Manual, Release 3.3.0, §5.4, p. 40
+\- The Lean Reference Manual, Release 3.3.0, §5.4, p. 40
 
 * [`[simp]`]
 * [`[inline]`]
