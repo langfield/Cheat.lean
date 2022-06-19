@@ -2,14 +2,23 @@
 
 > Lean 4 has a type system roughly as strong as grain alcohol.
 
-`Cheat.lean` is a field guide to the syntax, symbols, operators, and commands
-of the Lean 4 functional programming language. It is designed to be as friendly
-as possible to users unfamiliar with purely functional programming or type theory.
+`Cheat.lean` is an early **WIP** field guide to the syntax, symbols, operators,
+and commands of the Lean 4 functional programming language. It is designed to
+be as friendly as possible to users unfamiliar with purely functional
+programming or type theory.
 
 This guide will not teach you to how to program in Lean 4. It's sole purpose is
 to be an answer to the question:
 
 > What does this notation do?
+
+This guide is currently very disorganized, and may have some imprecise or
+incorrect information, since I am writing it as I learn Lean 4 from scratch.
+
+**Internal note.** It may prove better to put each operator/symbol/command in
+its own `.lean` file, and generate markdown from each of these, and then
+concatenate them into a `README`. This could be achieved with a fairly simple
+`Makefile`.
 
 
 ## Symbols and operators
