@@ -1,5 +1,3 @@
-
-
 # Cheat.lean
 
 > Lean 4 has a type system roughly as strong as grain alcohol.
@@ -25,6 +23,7 @@ to be an answer to the question:
 * [`a.b`](#ab-dot-notation) (dot notation)
 * [`a => b`](#ab-maps-to) (dot notation)
 * `()` ([unit value](#-unit-value))
+* [`. <tactic>`](#bullet-notation) (bullet notation)
 
 
 ## Commands
@@ -124,7 +123,7 @@ data. You can assign an attribute foo to a object by preceding its declaration w
 
 ## Types
 
-*[`Unit`](#Unit)
+* [`Unit`](#Unit)
 
 
 
@@ -290,6 +289,13 @@ def f (x : Nat) : IO Unit := do
 ```
 Note that our last action is `pure ()`, which is done to satisfy the return
 type of `f`. It makes the `else` branch essentially a no-op.
+
+## `. <tactic>` (bullet notation)
+
+Increases indentation level for a subgoal during tactic mode. TPIL says that
+this is for "structuring" the proof. The dot is not an operator, and does not
+perform any transformation on the tactic(s) that follow it. Removing the
+dot/bullet as well as the identation will yield an identical proof.
 
 ## `_`
 
@@ -667,5 +673,3 @@ compiler to perform a certain action.
   4. `)`
 
 ## How to use this field guide
-
-

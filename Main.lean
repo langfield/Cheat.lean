@@ -177,3 +177,9 @@ def m_α := IO.println "hello world"
 -- problem stuck` error.
 def α_to_m_β : Unit → IO UInt32 := (λ _ => pure 0)
 #check α_to_m_β
+
+
+-- Investigating the `<|>` operator.
+#check true
+#check false
+#check true <|> false
