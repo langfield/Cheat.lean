@@ -197,3 +197,8 @@ theorem T : a = e :=
     _ = d + 1  := congrArg Nat.succ h3
     _ = 1 + d  := Nat.add_comm d 1
     _ = e      := Eq.symm h4
+
+
+def isEmpty {α : Type u} : List α → Bool
+  | [] => true
+  | _ :: _ => false
